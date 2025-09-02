@@ -2,4 +2,3 @@ node_modules/
 .nx/cache
 .nx
 lerna-debug.log
-.DS_Store
