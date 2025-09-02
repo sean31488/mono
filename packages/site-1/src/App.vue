@@ -16,7 +16,7 @@ const size = ref('small')
 
 <template>
   <p class="text-my-color">
-    hello my color
+    my color
   </p>
   <MyButton
     v-for="d in data"
