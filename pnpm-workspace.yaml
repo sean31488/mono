@@ -1,0 +1,11 @@
+packages:
+  - packages/*
+
+catalog:
+  eslint: ^9
+
+onlyBuiltDependencies:
+  - '@tailwindcss/oxide'
+  - esbuild
+  - nx
+  - unrs-resolver

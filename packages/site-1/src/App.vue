@@ -1,5 +1,5 @@
 <script setup>
-import { MyButton } from '@sean/ui'
+import { MyButton, MyInput } from '@sean/ui'
 import axios from 'axios'
 import { ref } from 'vue'
 
@@ -16,7 +16,7 @@ const size = ref('small')
 
 <template>
   <p class="text-my-color">
-    hello my color
+    my color
   </p>
   <MyButton
     v-for="d in data"
@@ -28,6 +28,7 @@ const size = ref('small')
       {{ d.name }}
     </template>
   </MyButton>
+  <MyInput />
 </template>
 
 <style scoped></style>

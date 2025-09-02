@@ -17,7 +17,6 @@
     "build:types": "vue-tsc --declaration --emitDeclarationOnly",
     "watch:js": "vite build --watch",
     "watch:types": "vue-tsc --declaration --emitDeclarationOnly --watch",
-
     "build": "npm-run-all2 -s build:js build:types",
     "dev:watch": "npm-run-all2 -s build -p watch:js watch:types"
   },
@@ -37,5 +36,8 @@
     "typescript": "~5.8.0",
     "vite": "^7.0.6",
     "vue-tsc": "^3.0.4"
+  },
+  "dependencies": {
+    "eslint": "^9.34.0"
   }
 }
