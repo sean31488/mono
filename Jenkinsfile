@@ -16,8 +16,15 @@ pipeline{
             steps{
                 nodejs(nodeJSInstallationName: 'v22') {
                     script{
-                        echo 'GIT_PREVIOUS_SUCCESSFUL_COMMIT ${env.GIT_PREVIOUS_SUCCESSFUL_COMMIT}'
                         def base = env.GIT_PREVIOUS_SUCCESSFUL_COMMIT?.trim()
+                        echo "GIT_PREVIOUS_SUCCESSFUL_COMMIT: ${base}"
+
+                        if (!base) {
+                            echo "GIT_PREVIOUS_SUCCESSFUL_COMMIT not found, using HEAD^"
+                            base = sh(script: "git rev-parse HEAD^", returnStdout: true).trim()
+                            echo "git rev-parse HEAD^: ${base}"
+                        }
+
                         sh 'npx lerna run build --since=${base}'
                     }
                 }
