@@ -7,8 +7,7 @@ pipeline{
         stage("install"){
             steps{
                 nodejs(nodeJSInstallationName: 'v22') {
-                    sh 'npm i -g pnpm@latest-10'
-                    sh 'pnpm install'
+                    sh 'npx -y pnpm install'
 				}
             }
         }
@@ -25,11 +24,11 @@ pipeline{
                             echo "git rev-parse HEAD^: ${env.GIT_BASE}"
                         }
 
-                        echo "env.BRANCH_NAME: ${env.BRANCH_NAME}"
+                        echo "env.GIT_BRANCH: ${env.GIT_BRANCH}"
                         def mode = 'dev'
-                        if (env.BRANCH_NAME == 'master'){
+                        if (env.GIT_BRANCH == 'origin/master'){
                             mode = 'prod'
-                        } else if (env.BRANCH_NAME == 'release'){
+                        } else if (env.GIT_BRANCH == 'origin/release'){
                             mode = 'stg'
                         }
                         echo "Build mode: ${mode}"
