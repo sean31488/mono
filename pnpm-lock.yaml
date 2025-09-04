@@ -7,7 +7,7 @@ settings:
 catalogs:
   default:
     eslint:
-      specifier: ^9.0.0
+      specifier: ^9
       version: 9.34.0
 
 importers:
@@ -17,6 +17,9 @@ importers:
       lerna:
         specifier: ^8.2.3
         version: 8.2.3(@types/node@22.18.0)(encoding@0.1.13)
+      pnpm:
+        specifier: ^10.15.1
+        version: 10.15.1
 
   packages/lint:
     dependencies:
@@ -3700,6 +3703,11 @@ packages:
   pkg-dir@4.2.0:
     resolution: {integrity: sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==}
     engines: {node: '>=8'}
+
+  pnpm@10.15.1:
+    resolution: {integrity: sha512-NOU4wym1VTAUyo6PRTWZf5YYCh0PYUM5NXRJk1NQ2STiL4YUaCGRJk7DPRRirCFWGv+X9rsYBlNRwWLH6PbeZw==}
+    engines: {node: '>=18.12'}
+    hasBin: true
 
   possible-typed-array-names@1.1.0:
     resolution: {integrity: sha512-/+5VFTchJDoVj3bhoqi6UeymcD00DAwb1nJwamzPvHEszJ4FpF6SNNbUbOS8yI56qHzdV8eK0qEfOSiodkTdxg==}
@@ -8895,6 +8903,8 @@ snapshots:
   pkg-dir@4.2.0:
     dependencies:
       find-up: 4.1.0
+
+  pnpm@10.15.1: {}
 
   possible-typed-array-names@1.1.0: {}
 
