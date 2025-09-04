@@ -1,5 +1,3 @@
-import groovy.json.*
-
 pipeline{
     agent any
 
@@ -27,10 +25,19 @@ pipeline{
                             echo "git rev-parse HEAD^: ${env.GIT_BASE}"
                         }
 
+                        echo "env.BRANCH_NAME: ${env.BRANCH_NAME}"
+                        def mode = 'dev'
+                        if (env.BRANCH_NAME == 'master'){
+                            mode = 'prod'
+                        } else if (env.BRANCH_NAME == 'release'){
+                            mode = 'stg'
+                        }
+                        echo "Build mode: ${mode}"
+
                         // TODO: test
                         // env.GIT_BASE = '324829927c500d828313d483ba31c1504b866446'
                         
-                        sh "npx lerna run build --since=${env.GIT_BASE}"
+                        sh "npx lerna run build --since=${env.GIT_BASE} -- --mode=${mode}"
                     }
                 }
             }
@@ -43,25 +50,24 @@ pipeline{
                             script: "npx lerna ls -a --since=${env.GIT_BASE} --json --loglevel=silent",
                             returnStdout: true
                         ).trim()
-
                         echo "Lerna ls output: ${ls}"
 
-                        def changed = new JsonSlurper().parseText(ls).collect{pkg -> new HashMap(pkg)}
+                        def changed = new groovy.json.JsonSlurper().parseText(ls).collect{pkg -> new HashMap(pkg)}
                         echo "Changed packages: ${changed}"
-                        echo "Changed type: ${changed.getClass()}"
-
 
                         changed.each {pkg ->
                             echo "pkg.location: ${pkg.location}"
                             dir(pkg.location) {
                                 echo "change dir to ${pkg.location}"
-                                def pwd = sh(script: 'pwd', returnStdout: true).trim()
-                                echo "pwd: ${pwd}"
 
                                 def s3Dir = readFile('.env').readLines().find { line -> 
                                     line.startsWith('S3_DIR=') 
                                 }?.substring(7)
                                 echo "S3_DIR from .env: ${s3Dir}"
+
+                                if (s3Dir){
+                                    // 這裡會做s3上傳
+                                }
                             }
                         }
                     }
