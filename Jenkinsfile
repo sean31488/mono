@@ -28,7 +28,7 @@ pipeline{
                         }
 
                         // TODO: test
-                        env.GIT_BASE = '324829927c500d828313d483ba31c1504b866446'
+                        // env.GIT_BASE = '324829927c500d828313d483ba31c1504b866446'
                         
                         sh "npx lerna run build --since=${env.GIT_BASE}"
                     }
@@ -59,8 +59,11 @@ pipeline{
                                 echo "pwd: ${pwd}"
 
                                 // TODO: 讀取.env的S3_DIR，並echo
-                                def props = readProperties file: '.env'
-                                echo "S3_DIR from .env: ${props.S3_DIR}"
+                                def envContent = readFile('.env')
+                                def s3Dir = envContent.readLines().find { line -> 
+                                    line.startsWith('S3_DIR=') 
+                                }?.substring(7)
+                                echo "S3_DIR from .env: ${s3Dir}"
                             }
                         }
                     }
