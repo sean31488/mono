@@ -58,9 +58,7 @@ pipeline{
                                 def pwd = sh(script: 'pwd', returnStdout: true).trim()
                                 echo "pwd: ${pwd}"
 
-                                // TODO: 讀取.env的S3_DIR，並echo
-                                def envContent = readFile('.env')
-                                def s3Dir = envContent.readLines().find { line -> 
+                                def s3Dir = readFile('.env').readLines().find { line -> 
                                     line.startsWith('S3_DIR=') 
                                 }?.substring(7)
                                 echo "S3_DIR from .env: ${s3Dir}"
