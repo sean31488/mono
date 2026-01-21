@@ -7,12 +7,8 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "noEmit": false,
-    "declaration": true,
-    "declarationDir": "dist/types",
-    "emitDeclarationOnly": true,
-    "outDir": "dist/types"
+    "verbatimModuleSyntax": false
   },
-  "include": ["*.d.ts", "src/**/*.ts", "src/**/*.vue"],
-  "exclude": ["node_modules", "dist", "src/main.ts", "src/App.vue"]
+  "include": ["**/*.d.ts", "src/**/*.ts", "src/**/*.vue"],
+  "exclude": ["node_modules", "dist", "**/*.story.vue"]
 }

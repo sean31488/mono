@@ -11,10 +11,17 @@ defineProps({
   },
   id: { type: Number, default: 0 }
 })
+
+defineEmits<{
+  myClick: [msg: string]
+}>()
 </script>
 
 <template>
-  <button :style="{background: hasBackground ? 'red' : 'white'}">
+  <button
+    :style="{background: hasBackground ? 'red' : 'white'}"
+    @click="$emit('myClick', 'hello')"
+  >
     <slot name="foo" />
     <slot name="bar" />
     <slot name="baz" />

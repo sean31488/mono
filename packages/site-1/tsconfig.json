@@ -1,0 +1,8 @@
+{
+  "include": [
+    "src/**/*.js",
+    "src/**/*.vue",
+    "../ui/src/**/*.vue",
+    "../ui/src/**/*.d.ts"
+  ]
+}

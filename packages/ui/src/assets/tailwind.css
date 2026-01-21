@@ -1,0 +1,4 @@
+@layer lib-tw-theme, lib-tw-base, lib-tw-components, lib-tw-utilities;
+@import "tailwindcss/theme.css" layer(lib-tw-theme) prefix(lib);
+@import "tailwindcss/preflight.css" layer(lib-tw-base) prefix(lib);
+@import "tailwindcss/utilities.css" layer(lib-tw-utilities) prefix(lib);

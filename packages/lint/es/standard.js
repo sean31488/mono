@@ -4,7 +4,7 @@ import neostandard from 'neostandard'
 
 export default [
   {
-    files: ['**/*.{js,mjs,cjs,vue}'],
+    files: ['**/*.{js,mjs,cjs,vue,tsx}'],
     plugins: { js },
     extends: ['js/recommended'],
     languageOptions: {

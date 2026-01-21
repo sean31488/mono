@@ -5,6 +5,7 @@ catalog:
   eslint: ^9
 
 onlyBuiltDependencies:
+  - '@parcel/watcher'
   - '@tailwindcss/oxide'
   - esbuild
   - nx

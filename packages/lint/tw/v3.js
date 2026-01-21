@@ -1,10 +1,11 @@
 module.exports = {
   theme: {
-    colors: {
-      'my-color': 'red'
-    },
     fontFamily: {},
-    extend: {}
+    extend: {
+      colors: {
+        'my-color': 'red'
+      },
+    }
   },
   plugins: [],
 }
