@@ -1,5 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import './style.css'
+import SeanUIPlugin from '@sean/ui/global'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+app.use(SeanUIPlugin)
+app.mount('#app')
